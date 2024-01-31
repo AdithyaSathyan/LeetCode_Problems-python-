@@ -1,0 +1,23 @@
+class Solution:
+
+    def countSymmetricIntegers(self, low: int, high: int) -> int:
+
+        def is_symmetric(num: int) -> bool:
+
+            str_num = str(num)
+
+            if len(str_num) % 2 == 1:
+
+                return False
+
+            half_length = len(str_num) // 2
+
+            first_half_sum = sum(map(int, str_num[:half_length]))
+
+            second_half_sum = sum(map(int, str_num[half_length:]))
+
+            return first_half_sum == second_half_sum
+
+        symmetric_count = sum(is_symmetric(num) for num in range(low, high + 1))
+
+        return symmetric_count
